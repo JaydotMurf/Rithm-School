@@ -1,0 +1,18 @@
+.my-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 2px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* use the :hover pseudo-class to apply a different 
+style to your button when it's hovered over */
+
+.my-button:hover {
+  background-color: darkblue;
+  cursor: pointer;
+  color: black;
+}
