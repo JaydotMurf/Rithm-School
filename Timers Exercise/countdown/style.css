@@ -1,0 +1,30 @@
+#countdown-container {
+  /* used flexbox to vertically center the text box 
+    and button inside a container element */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#countdown-input {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#countdown-button {
+  width: 150px;
+  height: 40px;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
