@@ -1,12 +1,20 @@
 // global selectors
 
+// this is the button beside the li
 const completeButtons = document.querySelectorAll("li button");
+
+// this is the form
 const form = document.querySelector("#add-task");
+
+// this is the input bar
 const input = document.querySelector("#taskSubmission");
+
+// this is the ul
 const toDoList = document.querySelector("#todoList");
 
 form.addEventListener("submit", function (e) {
   // Ensure the submission of the form doesn't refresh the page
+
   e.preventDefault();
   // console.log(input.value);
 
@@ -24,7 +32,7 @@ form.addEventListener("submit", function (e) {
   input.value = "";
 });
 
-// cross out the li once task completed, if task completed, remove
+// crosss out the li once task completed, if task completed, remove
 toDoList.addEventListener("click", function (e) {
   if (e.target.tagName === "BUTTON") {
     if (e.target.parentElement.classList.contains("completed-Task")) {

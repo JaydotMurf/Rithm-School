@@ -1,13 +1,23 @@
 body {
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 10%,
-    rgba(0, 212, 255, 1) 17%
-  );
+  background: linear-gradient(to right, #00b4db, #0083b0);
 }
 
+/* Center Align Elements */
+.container {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Removing black dots from li */
+ul {
+  list-style-type: none;
+}
+
+/* line through li once completed */
 li.completed-Task {
   text-decoration: line-through;
 }
