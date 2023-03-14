@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>ToDo List</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="todo.css" />
   </head>
   <body>
-    <header>
-      <h1>ToDoodle</h1>
-    </header>
-    <div class="flex-container">
-      <aside>
-        <h2>Task List</h2>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-        </ul>
-      </aside>
-      <main>
-        <input type="text" value="Enter new task: " />
-        <button>Submit</button>
-      </main>
+    <div class="container">
+      <h1 id="firstHeader">ToDo List</h1>
+      <form action="" id="add-task">
+        <label for="taskSubmission"></label>
+        <input
+          id="taskSubmission"
+          type="text"
+          id="todoInput"
+          placeholder="Enter a new task..."
+        />
+        <button id="addButton">Add</button>
+      </form>
+      <ul id="todoList">
+        <li>Work on Project <button>Completed</button></li>
+        <li>Throw out Trash <button>Completed</button></li>
+        <li>Go to gym <button>Completed</button></li>
+        <li>Call mom <button>Completed</button></li>
+      </ul>
     </div>
-    <footer>
-      <p>Created by: Jerraill Murphy</p>
-    </footer>
+    <script src="todo.js"></script>
   </body>
 </html>

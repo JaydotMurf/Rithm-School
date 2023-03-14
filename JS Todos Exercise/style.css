@@ -1,39 +1,13 @@
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 10%,
+    rgba(0, 212, 255, 1) 17%
+  );
 }
 
-header {
-  background-color: #7c0a02;
-  color: #fff;
-  padding: 1rem;
-}
-
-.flex-container {
-  display: flex;
-  flex-grow: 1;
-}
-
-aside {
-  background-color: #fbceb1;
-  width: 200px;
-  padding: 1rem;
-}
-
-main {
-  flex-grow: 1;
-  padding: 1rem;
-}
-
-button {
-  background-color: #7c0a02;
-  color: #fff;
-  padding: 1rem;
-}
-
-footer {
-  background-color: #7c0a02;
-  color: #fff;
-  padding: 1rem;
+li.completed-Task {
+  text-decoration: line-through;
 }
