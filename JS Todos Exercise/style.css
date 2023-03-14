@@ -7,14 +7,16 @@ body {
 .container {
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 3px solid lightcyan;
   padding: 10px;
   text-align: center;
 }
 
-/* Removing black dots from li */
+/* Removing black dots from li, add border around task list*/
 ul {
   list-style-type: none;
+  border: 1px lightcyan;
+  border-style: dotted dashed solid double;
 }
 
 /* line through li once completed */
