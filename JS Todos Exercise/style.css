@@ -19,6 +19,10 @@ ul {
   border-style: dotted dashed solid double;
 }
 
+li button {
+  margin-left: 5px;
+}
+
 /* line through li once completed */
 li.completed-Task {
   text-decoration: line-through;

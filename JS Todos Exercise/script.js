@@ -1,60 +1,47 @@
 // global selectors
 
-const completeButtons = document.querySelectorAll("li button");
-const form = document.querySelector("#add-task");
-const input = document.querySelector("#taskSubmission");
-const toDoList = document.querySelector("#todoList");
+const completedButton = document.querySelectorAll('li > button');
+const taskForm = document.querySelector('#add-task');
+const taskInput = document.querySelector('input[type="text"]');
+const toDoList = document.querySelector('#todoList');
 
-form.addEventListener("submit", function (e) {
-  // Ensure the submission of the form doesn't refresh the page
+// global vars
+const completed = 'Completed';
+
+// add event listener to taskInput
+taskForm.addEventListener('submit', function (e) {
   e.preventDefault();
+  console.log(taskInput.value);
 
-  let taskValue = input.value.trim();
+  const taskName = taskInput.value.trim();
 
-  //   console.log(taskValue);
+  createTaskAndButton(taskName);
 
-  // console.log(input.value);
-
-  // create new tasks/button pair and append to the list
-  createAndAppendTask(input.value.trim());
-
-  // Save the task to local storage
-  if (input.value.trim !== "") {
-    // stringify tasks
-    localStorage.setItem("tasks", JSON.stringify(taskValue));
-    // const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    // tasks.push(input.value.trim());
-  }
-  // reset input value
-  input.value = "";
+  taskInput.value = '';
 });
 
-// crosss out the li once task completed, if task completed, remove
-toDoList.addEventListener("click", function (e) {
-  if (e.target.tagName === "BUTTON") {
-    if (e.target.parentElement.classList.contains("completed-Task")) {
-      e.target.parentElement.remove();
-    } else {
-      e.target.parentElement.classList.add("completed-Task");
-      e.target.innerText = "Remove";
+function createTaskAndButton(taskValue) {
+  const taskLi = document.createElement('Li');
+  const taskBtn = document.createElement('Button');
+
+  taskLi.innerText = taskValue;
+  taskBtn.innerText = completed;
+
+  taskLi.append(taskBtn);
+  toDoList.append(taskLi);
+}
+
+// completedButton is a NodeList, which is a collection of elements
+// so you need to loop through the completedButton NodeList and add the event listener to each individual button element:
+
+toDoList.addEventListener('click', function (e) {
+  //   console.log(e);
+  const button = e.target;
+  if (button === 'BUTTON');
+  {
+    if (button.parentElement.classList.contains('completed-Task')) {
+      button.parentElement.remove();
     }
   }
+  button.parentElement.classList.add('completed-Task');
 });
-
-window.addEventListener("DOMContentLoaded", function () {
-  let tasks = JSON.parse(localStorage.getItem("tasks"));
-  // check if tasks is not null or undefined before calling forEach()
-  tasks.forEach((task) => createAndAppendTask(task));
-});
-
-// Function to create and append tasks
-function createAndAppendTask(taskText) {
-  const newTask = document.createElement("li");
-  const newCompleteBtn = document.createElement("button");
-
-  newCompleteBtn.innerText = "Completed ";
-  newTask.innerText = taskText + " ";
-
-  newTask.appendChild(newCompleteBtn);
-  toDoList.appendChild(newTask);
-}
