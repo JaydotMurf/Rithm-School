@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>AquaTasker</title>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <title>Todo List</title>
   </head>
   <body>
-    <div class="container">
-      <h1 id="firstHeader">AquaTasker</h1>
-      <form action="" id="add-task">
-        <label for="taskSubmission"></label>
-        <input
-          id="taskSubmission"
-          type="text"
-          id="todoInput"
-          placeholder="Enter a new task..."
-        />
-        <button id="addButton">Add</button>
-        <button id="removeAllButton">Remove All</button>
-      </form>
-      <ul id="todoList"></ul>
+    <div id="container">
+      <div id="formContainer">
+        <form id="taskForm">
+          <input id="taskInput" type="text" /><button id="submitButton">
+            Submit
+          </button>
+          <button id="completeAllButton">Complete All</button>
+        </form>
+      </div>
+      <ul id="taskList">
+        <!-- <li class="listItem">Example 01</li>
+        <li class="listItem">Example 02</li>
+        <li class="listItem">Example 03</li>
+        <li class="listItem">Example 04</li> -->
+      </ul>
     </div>
     <script src="script.js"></script>
   </body>

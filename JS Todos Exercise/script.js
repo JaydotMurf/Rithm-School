@@ -1,95 +1,102 @@
-// GLOBAL SELECTORS
+const form = document.querySelector('#taskForm');
+const input = document.querySelector('#taskInput');
+const submit = document.querySelector('#submitButton');
+const list = document.querySelector('#taskList');
+const completeAll = document.querySelector('#completeAllButton');
 
-const completedButton = document.querySelectorAll('li > button');
-const removeAllButton = document.querySelector('#removeAllButton');
-const taskForm = document.querySelector('#add-task');
-const taskInput = document.querySelector('input[type="text"]');
-const toDoList = document.querySelector('#todoList');
-
-// EVENT LISTENERS
-taskForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  //   console.log(taskInput.value);
-
-  const taskName = taskInput.value.trim();
-
-  createTaskAndButton(taskName);
-
-  taskInput.value = '';
+// I have to refactor code get this to work porperly
+window.addEventListener('load', function (e) {
+  // Retrieve all the task items from Local Storage and create task elements
+  const taskItems = getTaskItemsFromLocalStorage();
+  if (taskItems) {
+    console.log(taskItems);
+    // taskItems.forEach((taskItem) => {
+    //   createTaskElement(taskItem.name, taskItem.completed);
+    // });
+  }
 });
 
-toDoList.addEventListener('click', function (e) {
-  const target = e.target;
-  if (target === 'BUTTON');
-  {
-    if (target.parentElement.classList.contains('completed-Task')) {
-      target.parentElement.remove();
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  // console.log(e);
+  const taskName = input.value.trim();
+
+  const taskObject = {
+    name: `${taskName}`,
+    completed: 'false',
+  };
+
+  // Generate a unique key name for the task item
+  const taskId = `task_${taskName}`;
+
+  createTaskElement();
+
+  // Save task item to Local Storage with the generated key name
+  localStorage.setItem(taskId, JSON.stringify(taskObject));
+});
+
+list.addEventListener('click', function (e) {
+  if ((e.target = 'LI')) {
+    if (!e.target.classList.contains('completed')) {
+      console.log(e);
+      e.target.classList.add('completed');
+
+      // Get the task object for the clicked list item from Local Storage
+      // console.log(
+      //   JSON.parse(localStorage.getItem(`task_${e.target.innerText}`))
+      // );
+
+      // Get the task object for the clicked list item from Local Storage
+      const taskId = `task_${e.target.innerText}`;
+      // console.log(taskId);
+      const taskObject = JSON.parse(
+        localStorage.getItem(`task_${e.target.innerText}`)
+      );
+
+      // Update the completed value in the task object
+      taskObject.completed = 'true';
+
+      // Save the updated task object to Local Storage
+      localStorage.setItem(taskId, JSON.stringify(taskObject));
+    } else {
+      // Remove a key/value pair from Local Storage
+      localStorage.removeItem(`task_${e.target.innerText}`);
+
+      // this will remove the element from the document.
+      // support for all browers, including IE
+      e.target.parentNode.removeChild(e.target);
     }
   }
-  target.parentElement.classList.add('completed-Task');
-  target.innerText = 'Remove';
-  console.log(e);
-
-  // Update task in local storage
-  let tasks = getTasksFromLocalStorage();
-  const taskIndex = tasks.indexOf(target.parentElement.innerText);
-  if (taskIndex > -1) {
-    tasks.splice(taskIndex, 1);
-  } else {
-    tasks.push(target.parentElement.innerText);
-  }
-  saveTasksToLocalStorage(tasks);
 });
 
-removeAllButton.addEventListener('click', function (e) {
-  clearAll();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  let tasks = getTasksFromLocalStorage();
-  toDoList.innerHTML = ''; // clear existing tasks
-  tasks.forEach((task) => {
-    createTaskAndButton(task);
-  });
-});
-
-// FUNCTIONS
-function createTaskAndButton(taskValue) {
-  const taskLi = document.createElement('Li');
-  const taskBtn = document.createElement('Button');
-  const completed = 'Completed';
-
-  taskLi.innerText = taskValue;
-  taskBtn.innerText = completed;
-  taskLi.append(taskBtn);
-  toDoList.append(taskLi);
-
-  // Add task to local storage
-  let tasks = getTasksFromLocalStorage();
-  if (!tasks.includes(taskValue)) {
-    tasks.push(taskValue);
-    saveTasksToLocalStorage(tasks);
-  }
-}
-
-// retrieve tasks from local storage
-function getTasksFromLocalStorage() {
-  let tasks;
-  if (localStorage.getItem('tasks') === null) {
-    tasks = [];
-  } else {
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-  }
-  return tasks;
-}
-
-// function to save tasks to local storage
-function saveTasksToLocalStorage(tasks) {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
-
-function clearAll() {
+completeAll.addEventListener('click', function (e) {
+  list.innerHTML = '';
   localStorage.clear();
-  toDoList.innerText = '';
-  //   toDoList.innerHTML = null;
+});
+
+function createTaskElement() {
+  // create core elements
+  const task = document.createElement('Li');
+  const taskText = input.value.trim();
+
+  // modify Li and Button
+  task.innerText = taskText;
+  task.classList.add('listItem');
+
+  //   add task to list
+  list.append(task);
+
+  input.value = '';
+}
+
+function getTaskItemsFromLocalStorage() {
+  const taskItems = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith('task_')) {
+      const taskObject = JSON.parse(localStorage.getItem(key));
+      taskItems.push(taskObject);
+    }
+  }
+  return taskItems;
 }

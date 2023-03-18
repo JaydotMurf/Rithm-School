@@ -1,29 +1,85 @@
-body {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(to right, #00b4db, #0083b0);
+/* reset the box model */
+* {
+  box-sizing: border-box;
 }
 
-/* Center Align Elements */
-.container {
-  margin: auto;
-  width: 50%;
-  border: 3px solid lightcyan;
-  padding: 10px;
+html {
+  /* convert px to rem when 1rem is equal to 10px */
+  font-size: 62.5%;
+}
+body {
+  padding: 0;
+  font-family: Monaco, sans-serif;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
+/* remove list markers */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#container {
+  height: 100vh;
+  /* background-color: red; */
+}
+
+#formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: blue; */
+  padding-bottom: 200px;
+  font-weight: bold;
+  font-size: 3em;
   text-align: center;
 }
 
-/* Removing black dots from li, add border around task list*/
-ul {
-  list-style-type: none;
-  border: 1px lightcyan;
-  border-style: dotted dashed solid double;
+#taskForm {
+  height: auto;
+  width: auto;
+  padding: 10px;
+  margin: 200px;
+  /* background-color: green; */
 }
 
-li button {
-  margin-left: 5px;
+#taskInput {
+  padding: 5px;
+  margin-right: 2px;
 }
 
-/* line through li once completed */
-li.completed-Task {
+#submitButton,
+#completeAllButton {
+  padding: 5px;
+}
+
+#taskList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.listItem {
+  background: transparent;
+  padding: 5px;
+  width: 200px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+li.completed {
   text-decoration: line-through;
 }
