@@ -15,7 +15,7 @@ let flipCounter = 0;
 let card1 = null;
 let card2 = null;
 
-const backgroundImageUrl = '/Memory-Game/div-background.png';
+const backgroundImageUrl = 'div-background.png';
 
 const COLORS = [
   'red',
@@ -82,6 +82,7 @@ gameContainer.style.pointerEvents = 'none';
 start.addEventListener('click', function () {
   gameContainer.style.pointerEvents = 'auto';
   // set the the timer to increment by 1 sec
+  // ! Set setInterval as a global var inorder to use clearInterval after game is won
   setInterval(function () {
     timer.innerHTML = 'Timer : ' + clockCounter++;
   }, 1000);

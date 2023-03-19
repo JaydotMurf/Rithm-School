@@ -27,6 +27,8 @@ form.addEventListener('submit', function (e) {
   };
 
   // Generate a unique key name for the task item
+  // ! Add all task to single arr instead of using taskID
+  // ? Keep the model and view synced
   const taskId = `task_${taskName}`;
 
   createTaskElement();
@@ -47,6 +49,7 @@ list.addEventListener('click', function (e) {
       // );
 
       // Get the task object for the clicked list item from Local Storage
+
       const taskId = `task_${e.target.innerText}`;
       // console.log(taskId);
       const taskObject = JSON.parse(

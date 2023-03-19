@@ -9,8 +9,9 @@ body {
   height: 200px;
   margin: 10px;
   display: inline-block;
+  background-image: url(div-background.png);
 }
-
-.flipped {
-  background-image: none;
+/* Styles over ride classes */
+#game div.flipped {
+  background-image: unset;
 }
