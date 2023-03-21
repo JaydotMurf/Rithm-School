@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f5;
+  columns: #0f0f0a;
+}
+
+.grid-container {
+  /* * Define grid item’s location within the grid by referring to specific grid lines. */
+  display: grid;
+  grid-template-columns: [first] 50% [second] 50% [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+  height: 100vh;
+}
+
+.grid-item {
+  /* * Properties for the Children | Grid Items */
+  text-align: center;
+}
+
+.grid-item-1 {
+  /* * Properties for the Children | Grid Items */
+  /* background-color: red; */
+  grid-column-start: first;
+  grid-column-end: end;
+  grid-row-start: row1-start;
+  grid-row-end: row1-end;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  text-decoration: line-through;
+}
+
+.grid-item-2 {
+  /* * Properties for the Children | Grid Items */
+  /* background-color: #3cb371; */
+  grid-column-start: first;
+  grid-column-end: span second;
+  grid-row-start: row1-end;
+  grid-row-end: span last-line;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 10px;
+  width: min-content;
+  background-color: transparent;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #7575a3;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.grid-item-3 {
+  /* * Properties for the Children | Grid Items */
+  /* background-color: blue; */
+  grid-column-start: second;
+  grid-column-end: span end;
+  grid-row-start: row1-end;
+  grid-row-end: span last-line;
+
+  /* box-shadow: 5px 10px #888888 inset; */
+}

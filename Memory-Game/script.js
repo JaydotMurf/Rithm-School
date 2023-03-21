@@ -15,6 +15,8 @@ let flipCounter = 0;
 let card1 = null;
 let card2 = null;
 
+let intervalID;
+
 const backgroundImageUrl = 'div-background.png';
 
 const COLORS = [
@@ -81,9 +83,8 @@ gameContainer.style.pointerEvents = 'none';
 // * Adding a click event listener to the start button that enables pointer events on the gameContainer and sets the timer to increment by 1 second.
 start.addEventListener('click', function () {
   gameContainer.style.pointerEvents = 'auto';
-  // set the the timer to increment by 1 sec
-  // ! Set setInterval as a global var inorder to use clearInterval after game is won
-  setInterval(function () {
+
+  intervalID = setInterval(function () {
     timer.innerHTML = 'Timer : ' + clockCounter++;
   }, 1000);
 });
@@ -113,11 +114,14 @@ function handleCardClick(event) {
     // * If the two cards match, add the match class, increment cardFlipCounter, and add back the event listeners to the cards.
     if (card1.className === card2.className) {
       cardFlipCounter += 2;
-      card1.classList.add('match');
-      card2.classList.add('match');
+      // card1.classList.add('match');
+      // card2.classList.add('match');
       console.log(card1, card2);
-      card1.addEventListener('click', handleCardClick);
-      card2.addEventListener('click', handleCardClick);
+
+      // ! Remove the following two lines of code be
+      // ! It allows the user to cheat the system
+      // card1.addEventListener('click', handleCardClick);
+      // card2.addEventListener('click', handleCardClick);
 
       // * Then set card1 and card2 to null, flipCounter to 0, and enable pointer events on the gameContainer.
       card1 = null;
@@ -143,10 +147,11 @@ function handleCardClick(event) {
   }
   // * If all cards have been flipped, display a congratulatory message and set the timer to 0.
   if (cardFlipCounter === 10) {
-    setTimeout(function () {
-      alert(`You've matched all the cards. Congratulations!`);
-      timer = 0;
-    }, 200);
+    alert(`You've matched all the cards. Congratulations!`);
+  }
+
+  function stopTimer() {
+    clearInterval(intervalID);
   }
 }
 
