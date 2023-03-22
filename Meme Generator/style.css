@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f5;
+  /* background-color: #f0f0f5; */
   columns: #0f0f0a;
 }
 
@@ -78,6 +78,9 @@ span {
   grid-column-end: span end;
   grid-row-start: row1-end;
   grid-row-end: span last-line;
+}
 
-  /* box-shadow: 5px 10px #888888 inset; */
+.image-container {
+  display: flex;
+  flex-direction: column;
 }
