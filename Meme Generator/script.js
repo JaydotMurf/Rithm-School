@@ -22,7 +22,6 @@ FORM.addEventListener('click', function (e) {
   )
     return;
 
-  //   console.log(`You clicked a Button`);
   addImage();
 });
 
