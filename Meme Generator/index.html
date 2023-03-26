@@ -6,41 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Meme Generator</title>
+    <title>memeGenerator</title>
   </head>
   <body>
-    <div class="grid-container">
-      <div class="grid-item grid-item-1">
-        <h1 class="title">MEME ME</h1>
-        <h3 class="instructionsHeader">
-          The <span>Best</span> Most Average Meme Generator on the Planet.
-        </h3>
-        <h3 class="instructionsHeader">Easily add text to images or memes.</h3>
-      </div>
-      <div class="grid-item grid-item-2">
-        <div class="form">
-          <form class="form" id="memeGeneratorForm">
-            <label for="imageURL">Image URL</label>
-            <input type="text" name="imageURL" id="imageURL" />
+    <header>
+      <h1>memeGenerator</h1>
+      <!-- <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav> -->
+    </header>
+    <aside>
+      <form class="memeGenerator" id="memeGenerator">
+        <label for="imgUrl">Image Link:</label>
+        <input type="text" id="imgUrl" name="imgUrl" /><br />
 
-            <label for="textOnTop">Text On Top</label>
-            <input type="text" name="textOnTop" id="textOnTop" />
+        <label for="upperText">Upper Text:</label>
+        <input type="text" id="upperText" name="upperText" /><br />
 
-            <label for="textOnTop">Text On Bottom</label>
-            <input type="text" name="textOnBottom" id="textOnBottom" />
+        <label for="lowerText">Lower Text:</label>
+        <input type="text" id="lowerText" name="lowerText" /><br />
 
-            <div class="buttons">
-              <button class="btn btn-add" id="btn-add">Add Meme</button>
-              <button class="btn btn-removeAll" id="btn-removeAll">
-                Remove All
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="grid-item grid-item-3">
-        <div class="image-container" id="image-container"></div>
-      </div>
-    </div>
+        <input type="submit" value="Submit" />
+      </form>
+    </aside>
+    <main>
+      <ul class="imageList" id="imageList"></ul>
+    </main>
+    <footer>
+      <p>&copy; 2023 My memeGenerator</p>
+    </footer>
   </body>
 </html>
